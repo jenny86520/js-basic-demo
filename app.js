@@ -40,3 +40,16 @@ switch (age) {
     console.log("小朋友");
 }
 //#endregion
+
+//#region Loop
+for (let i = 1; i <= 9; i++) {
+  for (let j = 1; j <= 9; j++) {
+    console.log(`${i} * ${j} = ${i * j}`);
+  }
+}
+
+let i = 0;
+while (i < 5) {
+  console.log(i++);
+}
+//#endregion
