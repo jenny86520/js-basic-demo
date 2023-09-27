@@ -53,3 +53,38 @@ while (i < 5) {
   console.log(i++);
 }
 //#endregion
+
+//#region DOM  - catch & set
+const subTitleById = document.getElementById("subTitle");
+const subTitleByClassNames = document.getElementsByClassName("sub-title");
+console.log(subTitleById);
+console.log(subTitleByClassNames);
+
+const subTitleByQueryId = document.querySelector("#subTitle");
+const subTitleByQueryClassName = document.querySelector(".sub-title");
+const subTitleByQueryTag = document.querySelector("h2"); // get first match
+const subTitleByQueryTags = document.querySelectorAll("h2"); // get all match
+console.log(subTitleByQueryId);
+console.log(subTitleByQueryClassName);
+console.log(subTitleByQueryTag);
+console.log(subTitleByQueryTags);
+
+subTitleById.textContent = "<i>TextContent</i>";
+subTitleByClassNames[0].innerHTML = "<i>TextContent</i>";
+subTitleByClassNames[0].style.color = "red";
+//#endregion
+
+//#region DOM - Event Listener
+document.addEventListener("DOMContentLoaded", () => {
+  const testBtn = document.getElementById("testBtn");
+  const clickHandler = () => console.log("click!");
+
+  testBtn.addEventListener("click", clickHandler);
+
+  const link = document.querySelector("#link");
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("click link!");
+  });
+});
+//#endregion
