@@ -113,3 +113,33 @@ deleteBtn.addEventListener("click", () => {
   }
 });
 //#endregion
+
+//#region DOM - Nested
+const nestedBlock = document.querySelector("#nestedBlock");
+const ul = nestedBlock.querySelector("ul");
+
+const b = ul.querySelector("li:nth-child(2)");
+console.log(b.textContent); // b
+
+console.log(b.parentElement); // Element ul
+console.log(b.parentNode); // Node ul
+
+console.log(ul.children); // HTMLCollection(4) [li, li, li, li]
+console.log(ul.childNodes); // NodeList(9) [text, li, text, li, text, li, text, li, text]
+
+console.log(b.previousElementSibling.textContent); // a
+console.log(b.nextElementSibling.textContent); // c
+console.log(b.previousSibling.previousSibling.innerHTML); // a
+console.log(b.nextSibling.nextSibling.innerHTML); // c
+
+ul.insertAdjacentElement("beforebegin", createElement("b", "beforebegin"));
+ul.insertAdjacentElement("afterbegin", createElement("b", "afterbegin"));
+ul.insertAdjacentElement("beforeend", createElement("b", "beforeend"));
+ul.insertAdjacentElement("afterend", createElement("b", "afterend"));
+
+function createElement(tag, text) {
+  const e = document.createElement(tag);
+  e.textContent = text;
+  return e;
+}
+//#endregion
