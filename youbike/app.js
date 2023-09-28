@@ -1,30 +1,32 @@
 const api =
   "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json";
-const list = document.querySelector("ul");
-const form = document.querySelector("#searchForm");
-const input = document.querySelector("#searchKeyword");
 
-async function getData(key) {
-  const res = await fetch(api);
-  const dataList = await res.json();
+$().ready(() => {
+  const list = $("ul");
+  const form = $("#searchForm");
+  const input = $("#searchKeyword");
 
-  setList(dataList.filter((data) => data.ar.includes(key)));
-}
+  async function getData(key) {
+    $.ajax({ url: api }).done((dataList) => {
+      setList(dataList.filter((data) => data.ar.includes(key)));
+    });
+  }
 
-async function setList(items) {
-  list.innerHTML = "";
+  async function setList(items) {
+    list.html("");
 
-  items.forEach((item) => {
-    const html = `<li class="list-group-item fs-5">
+    items.forEach((item) => {
+      const html = `<li class="list-group-item fs-5">
         <i class="fas fa-bicycle"></i>
         ${item.sna.replace("YouBike2.0_", "")} (${item.tot})<br />
         <small class="text-muted">${item.ar}</small>
     </li>`;
-    list.insertAdjacentHTML("beforeend", html);
-  });
-}
+      list.append(html);
+    });
+  }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); // stop submit
-  getData(input.value);
+  form.submit((e) => {
+    e.preventDefault(); // stop submit
+    getData(input.val());
+  });
 });
