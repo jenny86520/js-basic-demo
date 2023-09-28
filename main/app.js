@@ -88,3 +88,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 //#endregion
+
+//#region DOM - Add
+const block = document.querySelector("#createBlock");
+
+const h = document.createElement("h1");
+h.textContent = "JS Created H1";
+const div = document.createElement("div");
+div.textContent = "div in H1";
+
+h.appendChild(div);
+block.appendChild(h);
+//#endregion
+
+//#region DOM - Delete
+const deleteBtn = document.querySelector("#deleteBtn");
+
+deleteBtn.addEventListener("click", () => {
+  const lastOne = document.querySelector("li:last-child");
+  if (lastOne) {
+    const ul = document.querySelector("ul");
+    ul.removeChild(lastOne);
+    // or use lastOne.remove();
+  }
+});
+//#endregion
