@@ -143,3 +143,12 @@ function createElement(tag, text) {
   return e;
 }
 //#endregion
+
+//#region jQuery
+
+$().ready(() => {
+  // after DOMContentLoaded
+  $("#jQueryTitle").html("jQuery Title");
+});
+
+//#endregion

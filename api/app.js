@@ -39,3 +39,12 @@ async function asyncGet() {
 asyncGet();
 
 //#endregion
+
+//#region jQuery
+
+$.ajax({ url: api }).done((res) => {
+  console.log(typeof res); // object
+  console.log(res);
+});
+
+//#endregion
